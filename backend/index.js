@@ -1,26 +1,38 @@
-const express = require('express');
-const connectDB = require('./config/moviesDB');
-const bodyParser = require('body-parser');
+const cors = require("cors");
+const express = require("express");
+const connectDB = require("./config/moviesDB");
+const bodyParser = require("body-parser");
+const initExternalData = require("./services/initExternalData");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
 
+app.use(cors());
+
 // התחברות למסד הנתונים
 connectDB();
 
-// דוגמה לנתיבי API
-// יש ליצור את הקבצים המתאימים בתיקיית routers
-app.use('/api/movies', require('./routers/moviesRouter'));
-app.use('/api/members', require('./routers/membersRouter'));
-app.use('/api/subscriptions', require('./routers/subscriptionsRouter'));
-app.use('/api/users', require('./routers/usersRouter'));
+// אתחול נתונים חיצוניים בעת עליית השרת
+initExternalData().catch((err) =>
+  console.error("Failed to init external data:", err)
+);
 
-app.get('/', (req, res) => {
-	res.send('Cinema Management System Backend');
+// ---------------------- ROUTERS ----------------------
+app.use("/api/auth", require("./routers/authRouter")); // login
+app.use("/api/create-account", require("./routers/createAccountRouter"));
+app.use("/api/movies", require("./routers/moviesRouter"));
+app.use("/api/members", require("./routers/membersRouter"));
+app.use("/api/subscriptions", require("./routers/subscriptionsRouter"));
+app.use("/api/users", require("./routers/usersRouter"));
+
+// ---------------------- ROOT ----------------------
+app.get("/", (req, res) => {
+  res.send("Cinema Management System Backend");
 });
 
+// ---------------------- START SERVER ----------------------
 app.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

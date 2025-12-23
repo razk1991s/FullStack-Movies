@@ -23,7 +23,6 @@
     "jwtoken": "^0.0.0",
     "mongoose": "^8.9.7"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/razk1991s/NodeJS-Factory.git"
