@@ -1,6 +1,6 @@
 [
   {
-    "id": "admin_id",
+    "id": "69504749ae36e530975c2320",
     "permissions": [
       "View Subscriptions",
       "Create Subscriptions",
@@ -10,7 +10,34 @@
       "Create Movies",
       "Delete Movies",
       "Update Movie",
+      "View Users",
+      "Create Users",
+      "Delete Users",
+      "Update Users",
       "Manage Users"
+    ]
+  },
+  {
+    "id": "69504e3bae36e530975c2324",
+    "permissions": [
+      "View Subscriptions",
+      "View Movies"
+    ]
+  },
+  {
+    "id": "69504e42ae36e530975c2325",
+    "permissions": [
+      "View Movies",
+      "Create Movies",
+      "Delete Movies",
+      "Update Movie"
+    ]
+  },
+  {
+    "id": "69504e47ae36e530975c2326",
+    "permissions": [
+      "View Subscriptions",
+      "View Movies"
     ]
   }
 ]

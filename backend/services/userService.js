@@ -70,7 +70,7 @@ async function createUser(data) {
   // 1) צור משתמש ב־MongoDB
   const newUser = await userRepo.createUser({
     UserName: data.UserName,
-    Password: "", // משתמש חדש חייב להגדיר סיסמה ב־CreateAccount
+    Password: data.Password || "",
   });
 
   const userId = newUser._id.toString();
