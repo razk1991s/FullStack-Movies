@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
 
-// אימות טוקן
+// checking authentication
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
@@ -17,7 +17,7 @@ function authenticateToken(req, res, next) {
   jwt.verify(token, JWT_SECRET, (err, user) => {
     if (err) return res.status(403).json({ message: "Invalid token" });
 
-    // בדיקת Session Timeout
+    // checking Session Timeout
     const now = Date.now();
     const sessionLimit = user.loginTime + user.sessionTimeOut * 60 * 1000;
 

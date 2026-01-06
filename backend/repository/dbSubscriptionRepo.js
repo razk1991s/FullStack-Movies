@@ -1,23 +1,17 @@
 const Subscription = require("../models/subscriptionModel");
 const Movie = require("../models/movieModel");
 
-// GET all subscriptions
 const getAllSubscriptions = () => Subscription.find();
 
-// GET subscription by ID
 const getSubscriptionById = (id) => Subscription.findById(id);
 
-// CREATE subscription
 const createSubscription = (data) => Subscription.create(data);
 
-// UPDATE subscription
 const updateSubscription = (id, data) =>
   Subscription.findByIdAndUpdate(id, data, { new: true });
 
-// DELETE subscription
 const deleteSubscription = (id) => Subscription.findByIdAndDelete(id);
 
-// SUBSCRIBE to movie
 async function subscribeToMovie(memberId, movieId, date) {
   let subscription = await Subscription.findOne({ MemberId: memberId });
 
@@ -43,7 +37,6 @@ async function subscribeToMovie(memberId, movieId, date) {
   return subscription;
 }
 
-// MOVIES WATCHED
 async function getMoviesWatchedByMember(memberId) {
   const subscription = await Subscription.findOne({ MemberId: memberId });
   if (!subscription) return [];

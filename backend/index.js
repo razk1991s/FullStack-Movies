@@ -10,11 +10,10 @@ const PORT = process.env.PORT || 4000;
 app.use(bodyParser.json());
 
 app.use(cors());
-
-// התחברות למסד הנתונים
+// ---------------------- CONNECT TO DATABASE ----------------------
 connectDB();
 
-// אתחול נתונים חיצוניים בעת עליית השרת
+// ---------------------- INITIALIZE EXTERNAL DATA ----------------------
 initExternalData().catch((err) =>
   console.error("Failed to init external data:", err)
 );

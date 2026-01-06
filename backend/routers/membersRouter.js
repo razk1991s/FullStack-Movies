@@ -6,7 +6,6 @@ const {
   authorize,
 } = require("../middleware/authMiddleware");
 
-// GET all members
 router.get(
   "/",
   authenticateToken,
@@ -17,7 +16,6 @@ router.get(
   }
 );
 
-// GET member by id
 router.get(
   "/:id",
   authenticateToken,
@@ -28,7 +26,6 @@ router.get(
   }
 );
 
-// POST create member
 router.post(
   "/",
   authenticateToken,
@@ -39,7 +36,6 @@ router.post(
   }
 );
 
-// PUT update member
 router.put(
   "/:id",
   authenticateToken,
@@ -53,7 +49,6 @@ router.put(
   }
 );
 
-// DELETE member
 router.delete(
   "/:id",
   authenticateToken,

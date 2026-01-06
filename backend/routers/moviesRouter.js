@@ -6,7 +6,6 @@ const {
   authorize,
 } = require("../middleware/authMiddleware");
 
-// GET all movies
 router.get(
   "/",
   authenticateToken,
@@ -17,7 +16,6 @@ router.get(
   }
 );
 
-// GET movie by id
 router.get(
   "/:id",
   authenticateToken,
@@ -28,7 +26,6 @@ router.get(
   }
 );
 
-// POST create movie
 router.post(
   "/",
   authenticateToken,
@@ -39,7 +36,6 @@ router.post(
   }
 );
 
-// PUT update movie
 router.put(
   "/:id",
   authenticateToken,
@@ -50,7 +46,6 @@ router.put(
   }
 );
 
-// DELETE movie
 router.delete(
   "/:id",
   authenticateToken,

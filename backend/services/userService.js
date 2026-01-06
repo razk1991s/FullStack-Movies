@@ -67,7 +67,7 @@ async function getUserById(id) {
 
 // CREATE user (DB + JSON)
 async function createUser(data) {
-  // 1) צור משתמש ב־MongoDB
+  // 1) add to DB
   const newUser = await userRepo.createUser({
     UserName: data.UserName,
     Password: data.Password || "",
@@ -75,7 +75,7 @@ async function createUser(data) {
 
   const userId = newUser._id.toString();
 
-  // 2) הוסף ל־users.json
+  // 2) add to users.json
   const users = readJson(usersPath);
   users.push({
     id: userId,
@@ -86,7 +86,7 @@ async function createUser(data) {
   });
   writeJson(usersPath, users);
 
-  // 3) הוסף ל־permissions.json
+  // 3) add to permissions.json
   const perms = readJson(permissionsPath);
   perms.push({
     id: userId,
@@ -99,12 +99,12 @@ async function createUser(data) {
 
 // UPDATE user (DB + JSON)
 async function updateUser(id, data) {
-  // 1) עדכון DB
+  // 1) update DB
   const updatedUser = await userRepo.updateUser(id, {
     UserName: data.UserName,
   });
 
-  // 2) עדכון users.json
+  // 2) update users.json
   const users = readJson(usersPath);
   const index = users.findIndex((u) => u.id === id);
   if (index !== -1) {
@@ -117,7 +117,7 @@ async function updateUser(id, data) {
     writeJson(usersPath, users);
   }
 
-  // 3) עדכון permissions.json
+  // 3) update permissions.json
   const perms = readJson(permissionsPath);
   const pIndex = perms.findIndex((p) => p.id === id);
   if (pIndex !== -1) {
@@ -130,14 +130,14 @@ async function updateUser(id, data) {
 
 // DELETE user (DB + JSON)
 async function deleteUser(id) {
-  // 1) מחיקה מ־DB
+  // 1) delete from DB
   await userRepo.deleteUser(id);
 
-  // 2) מחיקה מ־users.json
+  // 2) delete from users.json
   const users = readJson(usersPath).filter((u) => u.id !== id);
   writeJson(usersPath, users);
 
-  // 3) מחיקה מ־permissions.json
+  // 3) delete from permissions.json
   const perms = readJson(permissionsPath).filter((p) => p.id !== id);
   writeJson(permissionsPath, perms);
 
