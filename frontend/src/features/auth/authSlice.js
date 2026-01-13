@@ -8,7 +8,6 @@ export const loginThunk = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const res = await authService.login(credentials);
-      // מניח שהשרת מחזיר { user: {...}, token: "..." }
       return res.data;
     } catch (err) {
       if (err.response && err.response.data)
