@@ -30,7 +30,11 @@ export default function CreateAccount() {
 
     setLoading(true);
     try {
-      const res = await api.post("/api/create-account", { username, password });
+      const res = await api.post("/api/create-account", {
+        UserName: username,
+        Password: password,
+      });
+
       setLoading(false);
       // מניח שהשרת מחזיר { success: true, message: "..." }
       navigate("/login", {
