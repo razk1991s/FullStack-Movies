@@ -27,9 +27,15 @@ export default function LoginPage() {
     };
   }, [dispatch]);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginThunk({ username, password }));
+    try {
+      const action = await dispatch(loginThunk({ username, password }));
+      const result = unwrapResult(action);
+      navigate(location.state?.from || "/main", { replace: true });
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   };
 
   return (

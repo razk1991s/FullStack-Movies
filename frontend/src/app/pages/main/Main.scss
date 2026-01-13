@@ -1,0 +1,119 @@
+// src/features/main/main.scss
+.cms-main-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: url("/movies.jpg") no-repeat center center;
+  background-size: cover;
+  padding: 32px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  color: #fff;
+  position: relative;
+}
+
+.cms-card {
+  width: min(920px, 96%);
+  background: rgba(6, 10, 14, 0.64);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 12px 40px rgba(2, 6, 12, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+  z-index: 2;
+}
+
+.cms-title {
+  font-size: 28px;
+  margin: 0 0 6px 0;
+  color: #ff2d2d;
+  font-weight: 800;
+}
+
+.cms-sub {
+  color: #cbd5e1;
+  margin: 0 0 20px 0;
+}
+
+.cms-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.cms-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.cms-menu-item:hover,
+.cms-menu-item:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.03);
+  outline: none;
+}
+
+.cms-item-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 45, 45, 0.12),
+    rgba(229, 9, 20, 0.06)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.cms-item-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.cms-item-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+}
+
+.cms-item-desc {
+  font-size: 13px;
+  color: #cbd5e1;
+  margin-top: 4px;
+}
+
+.cms-footer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+  color: #cbd5e1;
+}
+
+.cms-link {
+  color: rgba(113, 117, 236, 0.98);
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.cms-sep {
+  opacity: 0.5;
+}
