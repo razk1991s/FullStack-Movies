@@ -2,7 +2,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import "./main.scss";
+import "./mainPage.scss";
 
 export default function Main() {
   const navigate = useNavigate();
@@ -80,11 +80,11 @@ export default function Main() {
         </nav>
 
         <div className="cms-footer">
-          <Link to="/profile" className="cms-link">
+          <Link to="../profile/Profile.jsx" className="cms-link">
             My Profile
           </Link>
           <span className="cms-sep">•</span>
-          <Link to="/help" className="cms-link">
+          <Link to="../help/Help.jsx" className="cms-link">
             Help
           </Link>
         </div>
